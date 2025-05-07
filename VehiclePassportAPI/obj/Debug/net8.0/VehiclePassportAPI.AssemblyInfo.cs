@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50326442d9b7f84e296dd0cefdaddba2f2b89b32")]
 [assembly: System.Reflection.AssemblyProductAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
