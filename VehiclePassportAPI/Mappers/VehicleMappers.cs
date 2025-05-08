@@ -14,7 +14,8 @@ namespace VehiclePassportAPI.Mappers
                 ChassiNumber = vehicleDto.ChassiNumber,
                 Brand = vehicleDto.Brand,
                 Model =vehicleDto.Model,
-                CustomerID =vehicleDto.CustomerID
+                CustomerID =vehicleDto.CustomerID,
+                Mileage = vehicleDto.Mileage
             };
         }
 
@@ -26,7 +27,8 @@ namespace VehiclePassportAPI.Mappers
                 FuelType = vehicleModel.FuelType,
                 ChassiNumber = vehicleModel.ChassiNumber,
                 Brand = vehicleModel.Brand,
-                Model = vehicleModel.Model
+                Model = vehicleModel.Model,
+                Mileage = vehicleModel.Mileage
             };
         }
     }

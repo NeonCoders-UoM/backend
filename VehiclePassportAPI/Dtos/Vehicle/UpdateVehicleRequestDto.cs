@@ -7,6 +7,8 @@
         public string ChassiNumber { get; set; } = string.Empty;
         public string Brand { get; set; } = string.Empty;
         public string Model { get; set; } = string.Empty;
+
+        public int Mileage { get; set; }
         public int CustomerID { get; set; }
 
     }

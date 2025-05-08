@@ -32,6 +32,7 @@ namespace VehiclePassportAPI.Controllers
         [HttpPost]
         public IActionResult CreateVehicle([FromBody] CreateVehicleRequestDto vehicleDto)
         {
+            vehicleDto.CustomerID = 2;
             var vehicleModel = vehicleDto.ToVehicleFromCreateDto();
             _context.Vehicle.Add(vehicleModel);
             _context.SaveChanges();
@@ -41,6 +42,7 @@ namespace VehiclePassportAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateVehicle([FromRoute] int id, [FromBody] UpdateVehicleRequestDto updateDto)
         {
+            updateDto.CustomerID = 2;
             var vehicleModel = _context.Vehicle.FirstOrDefault(x => x.VehicleID == id);
 
             if(vehicleModel == null)
@@ -53,6 +55,7 @@ namespace VehiclePassportAPI.Controllers
             vehicleModel.FuelType = updateDto.FuelType;
             vehicleModel.Brand = updateDto.Brand;
             vehicleModel.Model = updateDto.Model;
+            vehicleModel.Mileage = updateDto.Mileage;
 
             _context.SaveChanges();
 
