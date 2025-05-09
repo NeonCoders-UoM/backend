@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VehiclePassportAPI.Data;
 using VehiclePassportAPI.Dtos.Vehicle;
 using VehiclePassportAPI.Mappers;
@@ -17,9 +18,9 @@ namespace VehiclePassportAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var stock = _context.Vehicle.Find(id);
+            var stock = await _context.Vehicle.FindAsync(id);
 
             if (stock == null)
             {
@@ -30,20 +31,28 @@ namespace VehiclePassportAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateVehicle([FromBody] CreateVehicleRequestDto vehicleDto)
+        public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleRequestDto vehicleDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             vehicleDto.CustomerID = 2;
             var vehicleModel = vehicleDto.ToVehicleFromCreateDto();
-            _context.Vehicle.Add(vehicleModel);
-            _context.SaveChanges();
+            await _context.Vehicle.AddAsync(vehicleModel);
+            await _context.SaveChangesAsync();
             return Created($"api/vehicles/{vehicleModel.VehicleID}", vehicleModel.ToVehicleDto());
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateVehicle([FromRoute] int id, [FromBody] UpdateVehicleRequestDto updateDto)
+        public async Task<IActionResult> UpdateVehicle([FromRoute] int id, [FromBody] UpdateVehicleRequestDto updateDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             updateDto.CustomerID = 2;
-            var vehicleModel = _context.Vehicle.FirstOrDefault(x => x.VehicleID == id);
+            var vehicleModel = await _context.Vehicle.FirstOrDefaultAsync(x => x.VehicleID == id);
 
             if(vehicleModel == null)
             {
@@ -57,15 +66,15 @@ namespace VehiclePassportAPI.Controllers
             vehicleModel.Model = updateDto.Model;
             vehicleModel.Mileage = updateDto.Mileage;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(vehicleModel.ToVehicleDto());
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteVehicle([FromRoute] int id)
+        public async Task<IActionResult> DeleteVehicle([FromRoute] int id)
         {
-            var vehicleModel = _context.Vehicle.FirstOrDefault(x => x.VehicleID == id);
+            var vehicleModel = await  _context.Vehicle.FirstOrDefaultAsync(x => x.VehicleID == id);
 
             if (vehicleModel == null)
             {
@@ -73,7 +82,7 @@ namespace VehiclePassportAPI.Controllers
             }
 
             _context.Vehicle.Remove(vehicleModel);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

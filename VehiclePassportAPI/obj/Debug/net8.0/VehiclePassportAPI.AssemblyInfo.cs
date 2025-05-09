@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+223bf888efc6cd3e9ffae98dcde7b1b5f51f5297")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb658bae3c323dfc5160fef43e34abc0c4b89e29")]
 [assembly: System.Reflection.AssemblyProductAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VehiclePassportAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
