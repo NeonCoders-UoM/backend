@@ -1,0 +1,6 @@
+@VPassport_HostAddress = http://localhost:5187
+
+GET {{VPassport_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
